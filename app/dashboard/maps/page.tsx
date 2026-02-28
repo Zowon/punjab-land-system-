@@ -1,13 +1,26 @@
 'use client'
 
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { MapPin, Search, Map, Stamp } from 'lucide-react'
-import { LeafletMap } from '@/components/leaflet-map'
 import { useLanguage } from '@/contexts/language-context'
 import { cn } from '@/lib/utils'
+
+// Dynamically import LeafletMap with no SSR
+const LeafletMap = dynamic(
+  () => import('@/components/leaflet-map').then((mod) => mod.LeafletMap),
+  { 
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-full flex items-center justify-center bg-emerald-50">
+        <p className="text-[#2d5a4c] text-sm font-bold">Loading map...</p>
+      </div>
+    )
+  }
+)
 
 const plotData = [
   { id: 'P-001', khasraNumber: 'KH-001', x: 20, y: 30, width: 60, height: 50, status: 'sold', area: '500m²', ownerEn: 'Hassan Khan', ownerUr: 'حسن خان' },

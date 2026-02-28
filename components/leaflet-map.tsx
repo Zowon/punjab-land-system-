@@ -1,17 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import { MapContainer, TileLayer, Polygon, Popup, ZoomControl } from 'react-leaflet'
-import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import { Card } from '@/components/ui/card'
-
-// Define custom icon for markers
-const customIcon = new L.Icon({
-  iconUrl: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%231e40af"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>',
-  iconSize: [32, 32],
-  iconAnchor: [16, 16],
-})
 
 interface PlotData {
   id: string
@@ -104,20 +94,6 @@ export function LeafletMap({
   onPlotSelect: (plot: PlotData) => void
   selectedPlot: PlotData | null
 }) {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) {
-    return (
-      <Card className="w-full h-full bg-card border-border flex items-center justify-center">
-        <p className="text-muted-foreground">Loading map...</p>
-      </Card>
-    )
-  }
-
   const center: [number, number] = [31.5215, 74.3600]
 
   return (
