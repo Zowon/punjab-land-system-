@@ -69,6 +69,32 @@ yarn dev
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+## 🚀 Deployment
+
+### Deploy to Vercel
+
+The easiest way to deploy this Next.js app is using [Vercel](https://vercel.com):
+
+1. Push your code to GitHub
+2. Import your repository on Vercel
+3. Vercel will automatically detect Next.js and configure the build
+4. Click "Deploy"
+
+The build process typically takes 2-3 minutes. You'll see:
+- ✅ Installing dependencies (pnpm install)
+- ✅ Building application (next build)
+- ✅ Deploying to production
+
+### Manual Deployment
+
+```bash
+# Build the application
+npm run build
+
+# Start production server
+npm run start
+```
+
 ## 🏗️ Project Structure
 
 ```
